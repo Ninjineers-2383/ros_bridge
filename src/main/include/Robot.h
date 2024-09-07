@@ -9,12 +9,15 @@
 #include <frc/TimedRobot.h>
 #include <frc/smartdashboard/SendableChooser.h>
 #include <memory>
+#include <vector>
 
 #include "zmq/zmq.hpp"
+#include "motor/Motor.hpp"
 
 class Robot : public frc::TimedRobot
 {
 public:
+  ~Robot() override;
   void RobotInit() override;
   void RobotPeriodic() override;
   void AutonomousInit() override;
@@ -36,4 +39,9 @@ private:
 
   zmq::context_t context;
   std::unique_ptr<zmq::socket_t> socketPub{nullptr};
+  std::unique_ptr<zmq::socket_t> socketRep{nullptr};
+
+  zmq::pollitem_t *poll_items = nullptr;
+
+  std::vector<std::unique_ptr<Motor>> motors;
 };

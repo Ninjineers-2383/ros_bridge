@@ -17,6 +17,9 @@
   "C_Cpp.default.configurationProvider": "vscode-wpilib",
   "files.associations": {
     "*.html": "jinja-html",
-    "*.xacro": "xml"
+    "*.xacro": "xml",
+    "*.inc": "cpp",
+    "memory": "cpp",
+    "optional": "cpp"
   }
 }
